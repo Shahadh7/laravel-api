@@ -108,7 +108,7 @@ class ProfileController extends Controller
         try {
 
             $request->validate([
-                'profile_image' => 'required|image|max:2048', // Max size: 2MB
+                'profile_image' => 'required|image',
             ]);
 
             $user = $request->user();
