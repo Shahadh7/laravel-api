@@ -31,7 +31,8 @@ class AuthController extends Controller
     public function login(Request $request) {
         $request->validate([
             'user_id' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'remember_me' => 'boolean',
         ]);
 
         $user = User::where('user_id', $request->user_id)->first();
@@ -40,11 +41,20 @@ class AuthController extends Controller
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
-        $token = $user->createToken('authToken')->plainTextToken;
+        $tokenName = 'auth-token';
+        $abilities = ['*'];
+
+        if ($request->boolean('remember_me')) {
+            $token = $user->createToken($tokenName, $abilities, now()->addYear()); 
+        } else {
+            $token = $user->createToken($tokenName, $abilities, now()->addDay());
+        }
+
 
         return response()->json([
-            'token' => $token,
             'user' => $user,
+            'token' => $token->plainTextToken,
+            'expires_at' => $token->accessToken->expires_at
         ]);
     }
 
