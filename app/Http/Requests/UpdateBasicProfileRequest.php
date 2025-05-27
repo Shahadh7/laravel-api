@@ -14,10 +14,10 @@ class UpdateBasicProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'salutation' => 'required|string|required|in:Mr,Ms,Mrs,Dr',
-            'first_name' => 'required|string|required',
-            'last_name' => 'required|string|required',
-            'email_address' => 'required|email|required|unique:profiles,email_address,' . $this->user()->id,
+            'salutation'    => 'required|string|in:Mr.,Ms.,Mrs.,Dr.',
+            'first_name'    => 'required|string',
+            'last_name'     => 'required|string',
+            'email_address' => 'required|email|unique:profiles,email_address,' . $this->user()->id . ',user_id',
         ];
     }
 }
