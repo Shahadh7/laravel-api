@@ -20,8 +20,8 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'http://localhost:3000',
-        'https://frontend.example.com',
+        'http://localhost:5173',
+        'https://exercise-v4.netlify.app',
     ],
 
     'allowed_origins_patterns' => [],
