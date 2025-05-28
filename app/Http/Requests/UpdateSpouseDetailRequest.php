@@ -15,8 +15,8 @@ class UpdateSpouseDetailRequest extends FormRequest
     {
         return [
             'salutation' => 'nullable|string',
-            'first_name' => 'nullable|string',
-            'last_name' => 'nullable|string',
+            'first_name' => ['nullable', 'string', 'regex:/^[A-Za-z]+$/'],
+            'last_name'  => ['nullable', 'string', 'regex:/^[A-Za-z]+$/'],
         ];
     }
 }
