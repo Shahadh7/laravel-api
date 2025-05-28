@@ -34,5 +34,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Profile Image Upload
     Route::post('/profile/upload', [ProfileController::class, 'uploadImage']);
 
+    Route::get('/user/is-married', [ProfileController::class, 'isMarried']);
+
 });
 

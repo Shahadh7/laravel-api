@@ -146,5 +146,19 @@ class ProfileController extends Controller
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    public function isMarried(Request $request)
+    {
+        $user = $request->user();
+        $profile = $user->profile;
+
+        if (! $profile) {
+            return response()->json(['message' => 'Profile not found.'], Response::HTTP_NOT_FOUND);
+        }
+
+        return response()->json([
+            'is_married' => $profile->marital_status === 'Married'
+        ], Response::HTTP_OK);
+    }
     
 }
