@@ -87,6 +87,13 @@ class ProfileController extends Controller
     public function updateAdditional(UpdateAdditionalProfileRequest $request)
     {
         try {
+
+            if(!$request->user()->profile) {
+                return response()->json([
+                    'message' => 'Please create add basic details first.'
+                ], Response::HTTP_NOT_FOUND);
+            }
+
             $request->user()->profile()->updateOrCreate(
                 ['user_id' => $request->user()->id],
                 $request->validated()
