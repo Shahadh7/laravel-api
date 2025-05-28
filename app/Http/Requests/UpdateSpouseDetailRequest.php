@@ -14,9 +14,9 @@ class UpdateSpouseDetailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'salutation' => 'string',
-            'first_name' => 'string',
-            'last_name' => 'string',
+            'salutation' => 'nullable|string',
+            'first_name' => 'nullable|string',
+            'last_name' => 'nullable|string',
         ];
     }
 }

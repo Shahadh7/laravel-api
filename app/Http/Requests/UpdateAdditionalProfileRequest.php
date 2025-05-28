@@ -17,9 +17,9 @@ class UpdateAdditionalProfileRequest extends FormRequest
             'home_address' => 'nullable|string|required',
             'country' => 'nullable|string|required',
             'postal_code' => 'nullable|string|required',
-            'dob' => 'date|before:-17 years',
-            'gender' => 'in:Male,Female',
-            'marital_status' => 'in:Single,Married',
+            'dob' => 'nullable|date|before:-17 years',
+            'gender' => 'nullable|in:Male,Female',
+            'marital_status' => 'nullable|in:Single,Married',
         ];
     }
 }
