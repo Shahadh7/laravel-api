@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('spouse_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('salutation');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('salutation')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->timestamps();
         });
     }
