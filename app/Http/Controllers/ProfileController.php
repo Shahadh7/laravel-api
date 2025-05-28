@@ -90,7 +90,7 @@ class ProfileController extends Controller
 
             if(!$request->user()->profile) {
                 return response()->json([
-                    'message' => 'Please create add basic details first.'
+                    'message' => 'Please add basic details first.'
                 ], Response::HTTP_NOT_FOUND);
             }
 
